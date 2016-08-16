@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.codingboy.zhihupaper.MainActivity">
+
+    <com.example.codingboy.zhihupaper.view.MyRefreshLayout
+        android:id="@+id/swipRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.example.codingboy.zhihupaper.view.MyListView
+        android:id="@+id/lv_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="10dp"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
+        ></com.example.codingboy.zhihupaper.view.MyListView>
+
+    </com.example.codingboy.zhihupaper.view.MyRefreshLayout>
+</RelativeLayout>

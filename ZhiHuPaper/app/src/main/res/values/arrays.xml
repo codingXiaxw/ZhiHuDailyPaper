@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="TabName">
+        <item>热门</item>
+        <item>发现</item>
+        <item>动态</item>
+        <item>消息</item>
+    </string-array>
+</resources>

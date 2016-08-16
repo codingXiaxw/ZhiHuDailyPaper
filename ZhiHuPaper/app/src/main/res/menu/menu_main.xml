@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.codingboy.zhihupaper.MainActivity">
+    <item
+        android:id="@+id/setting"
+        android:title="设置"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/favorite"
+        android:title="喜欢"
+        android:icon="@mipmap/fav_normal"
+        app:showAsAction="always"/>
+</menu>
