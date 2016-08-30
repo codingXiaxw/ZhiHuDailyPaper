@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,10 +19,11 @@ import com.example.codingboy.zhihupaper.util.ConfigUtil;
 import com.example.codingboy.zhihupaper.util.NetWorkCheckUtil;
 
 
+
 /**
  * Created by codingBoy on 16/8/3.
  */
-public class SplashActivity extends Activity
+public class SplashActivity extends AppCompatActivity
 {
     private TextView mTextView;
     private ImageView mImageView;
@@ -49,6 +51,7 @@ public class SplashActivity extends Activity
             finish();
             return;
         }
+        getSupportActionBar().setElevation(0);
         setTitle("");
         initView();
         initData();

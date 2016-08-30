@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -103,6 +104,8 @@ public class NewsListAdapter extends BaseAdapter
         }
         return convertView;
     }
+
+
     class ViewHolder{
         public ImageView mImageView;
         public TextView mTextView;

@@ -62,6 +62,7 @@ public class MyPagerAdapter extends PagerAdapter
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                NewsDetailActivity.startActivity(mContext,topNewsDetail);
             }
         });
         return view;

@@ -73,7 +73,7 @@ public class MyDbUtil {
         while(cursor.moveToNext())
         {
             News.NewsDetail newsDetail=new News().new NewsDetail();
-            newsDetail.id=cursor.getString(cursor.getColumnIndex("newID"));
+            newsDetail.id=cursor.getString(cursor.getColumnIndex("newsID"));
             newsDetail.images=new String[]{cursor.getString(cursor.getColumnIndex("image"))};
             newsDetail.title=cursor.getString(cursor.getColumnIndex("title"));
             newsDetail.type=cursor.getColumnName(cursor.getColumnIndex("type"));

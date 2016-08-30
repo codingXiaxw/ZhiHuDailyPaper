@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.example.codingboy.zhihupaper.activity.FavoriteActivity;
 import com.example.codingboy.zhihupaper.activity.NewsDetailActivity;
@@ -30,6 +32,8 @@ import com.example.codingboy.zhihupaper.view.MyListView;
 import com.example.codingboy.zhihupaper.view.MyRefreshLayout;
 
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -210,6 +214,35 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private static boolean isExit=false;
+    @Override
+    public boolean onKeyDown(int keyCode,KeyEvent event)
+    {
+        if (keyCode==KeyEvent.KEYCODE_BACK)
+        {
+            exitBy2Click();
+        }
+        return false;
+    }
+
+    private void exitBy2Click() {
+        if (isExit==false)
+        {
+            isExit=true;
+            Toast.makeText(getApplicationContext(), "再按一次返回键退出", Toast.LENGTH_SHORT).show();
+            Timer timer=new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isExit=false;
+                }
+            },2000);
+        }else
+        {
+            finish();
+            System.exit(0);
+        }
+    }
 
 
 }

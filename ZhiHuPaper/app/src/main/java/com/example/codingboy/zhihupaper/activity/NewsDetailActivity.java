@@ -1,34 +1,28 @@
 package com.example.codingboy.zhihupaper.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.webkit.WebView;
-import android.widget.Toast;
 
-import com.example.codingboy.zhihupaper.MainActivity;
 import com.example.codingboy.zhihupaper.R;
 import com.example.codingboy.zhihupaper.asyncTask.NewsDetailAsyncTask;
-import com.example.codingboy.zhihupaper.db.MyDatebaseHelper;
 import com.example.codingboy.zhihupaper.db.MyDbUtil;
 import com.example.codingboy.zhihupaper.domin.News;
 import com.example.codingboy.zhihupaper.util.NetWorkCheckUtil;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by codingBoy on 16/8/12.
  */
-public class NewsDetailActivity extends Activity
+public class NewsDetailActivity extends AppCompatActivity
 {
     private static final String rootURL="http://news-at.zhihu.com/api/4/news/";
     private WebView mWebView;
@@ -42,20 +36,20 @@ public class NewsDetailActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsdetail);
-        Intent intent=getIntent();
-        Bundle data=intent.getExtras();
-        if (data.containsKey("data"))
-        {
-            mDetail= (News.NewsDetail) data.getSerializable("data");
-            isFavorite= MyDbUtil.isFavoriteNews(this,mDetail.id);
-        }else
-        {
-            mTopNewsDetail= (News.TopNewsDetail) data.getSerializable("data");
-            isFavorite=MyDbUtil.isFavoriteNews(this,mTopNewsDetail.id);
+        Intent intent = getIntent();
+        Bundle data = intent.getExtras();
+        if(data.containsKey("data")){
+            mDetail = (News.NewsDetail) data.getSerializable("data");
+            isFavorite = MyDbUtil.isFavoriteNews(this,mDetail.id);
+        }else{
+            mTopNewsDetail = (News.TopNewsDetail) data.getSerializable("topnews");
+            isFavorite = MyDbUtil.isFavoriteNews(this,mTopNewsDetail.id);
         }
+//        Log.e("TAG6", "接收的数据" + detail.toString());
         initView();
-        android.app.ActionBar actionBar=getActionBar();
+        ActionBar actionBar =getSupportActionBar();
         setTitle("");
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void initView() {
@@ -98,7 +92,7 @@ public class NewsDetailActivity extends Activity
     {
         switch (item.getItemId())
         {
-            case R.id.home:
+            case android.R.id.home:
                 finish();
                 break;
             case R.id.favorite:
@@ -147,33 +141,5 @@ public class NewsDetailActivity extends Activity
         return super.onCreateOptionsMenu(menu);
     }
 
-    private static boolean isExit=false;
-    @Override
-    public boolean onKeyDown(int keyCode,KeyEvent event)
-    {
-        if (keyCode==KeyEvent.KEYCODE_BACK)
-        {
-            exitBy2Click();
-        }
-        return false;
-    }
 
-    private void exitBy2Click() {
-        if (isExit==false)
-        {
-            isExit=true;
-            Toast.makeText(getApplicationContext(),"再按一次返回键退出",Toast.LENGTH_SHORT).show();
-            Timer timer=new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    isExit=false;
-                }
-            },2000);
-        }else
-        {
-            finish();
-            System.exit(0);
-        }
-    }
 }

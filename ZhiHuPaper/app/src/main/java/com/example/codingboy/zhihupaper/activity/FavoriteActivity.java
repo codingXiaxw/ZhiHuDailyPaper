@@ -1,8 +1,8 @@
 package com.example.codingboy.zhihupaper.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,19 +19,19 @@ import java.util.ArrayList;
 /**
  * Created by codingBoy on 16/8/11.
  */
-public class FavoriteActivity extends Activity
+public class FavoriteActivity extends AppCompatActivity
 {
     private ListView mListView;
     private ArrayList<News.NewsDetail> mNewsDetails;
     private NewsListAdapter mAdapter;
-    private android.app.ActionBar mActionBar;
+    private ActionBar mActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
-        mActionBar=getActionBar();
+        mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
         setTitle("我的收藏");
         initView();
